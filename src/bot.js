@@ -26,10 +26,6 @@ const init = () => {
     await responder.reply(client, message);
   });
 
-  client.on('message_create', async (message) => {
-    await responder.reply(client, message);
-  });
-
   client.initialize();
 };
 
