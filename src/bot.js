@@ -1,6 +1,8 @@
 import qrcode from 'qrcode-terminal';
 import pkg from 'whatsapp-web.js';
 
+import responder from './responder.js';
+
 const { Client, LocalAuth } = pkg;
 
 const init = () => {
@@ -21,13 +23,11 @@ const init = () => {
   });
 
   client.on('message', async (message) => {
-    if (message.body === '!ping') {
-      await message.reply('pong');
-    } else if (message.body === '!hello') {
-      await message.reply('Hello there!');
-    } else if (message.body === '!bye') {
-      await message.reply('Goodbye!');
-    }
+    await responder.reply(client, message);
+  });
+
+  client.on('message_create', async (message) => {
+    await responder.reply(client, message);
   });
 
   client.initialize();

@@ -4,6 +4,7 @@ npm-debug.log*
 
 # WhatsApp session
 .wwebjs_auth/
+.wwebjs_cache/
 
 # Env/config files
 .env
