@@ -1,0 +1,9 @@
+services:
+  thar:
+    build: .
+    container_name: bot
+    volumes:
+      - ./.wwebjs_auth:/app/.wwebjs_auth
+    restart: always
+    environment:
+      - NODE_ENV=production

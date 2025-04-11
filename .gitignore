@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log*
+
+# WhatsApp session
+.wwebjs_auth/
+
+# Env/config files
+.env
+
+# Logs
+logs/
+*.log
+
+# Docker
+*.local
+docker-compose.override.yml
+
+# System
+.DS_Store

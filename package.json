@@ -1,0 +1,28 @@
+{
+  "name": "thar",
+  "version": "1.0.0",
+  "description": "Personal WhatsApp bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node index.js",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": [],
+  "author": "César Bolaños <cesar.bolanos.andino@gmail.com>",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "node-schedule": "^2.1.1",
+    "puppeteer": "^24.6.1",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.23.0"
+  },
+  "devDependencies": {
+    "eslint": "^9.24.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "prettier": "^3.5.3"
+  }
+}
