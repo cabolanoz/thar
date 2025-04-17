@@ -46,7 +46,19 @@ export default async function ai(message) {
       },
       body: JSON.stringify({
         model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }],
+        messages: [
+          {
+            role: 'system',
+            content: `La fecha actual es ${new Date().toLocaleDateString('es-NI', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+              timeZone: 'America/Managua',
+            })}.`,
+          },
+          { role: 'user', content: prompt },
+        ],
         temperature: 0.7,
       }),
     });
