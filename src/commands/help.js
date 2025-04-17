@@ -5,6 +5,7 @@ export default async function help(message) {
     - *!chiste*
     - *!frase*
     - *!imagen*
+    - *!ai [pregunta]*
     - *!ayuda*
     `);
 }
