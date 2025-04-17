@@ -14,6 +14,7 @@ const welcomeMessage = () => {
     - *!chiste*
     - *!frase*
     - *!imagen*
+    - *!ai [pregunta]*
     - *!ayuda*`;
 };
 
