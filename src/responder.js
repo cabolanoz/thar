@@ -1,21 +1,9 @@
-import { joke, phrase, horoscope, image } from './commands/index.js';
+import { joke, phrase, horoscope, image, ai, help } from './commands/index.js';
 
 const userMap = new Map();
 
-const isSameDay = (a, b) => {
-  return a.toISOString().slice(0, 10) === b.toISOString().slice(0, 10);
-};
-
-const hasHistory = (from) => {
-  const today = new Date();
-  const lastSeen = userMap.get(from);
-
-  if (!lastSeen || !isSameDay(new Date(lastSeen), today)) {
-    userMap.set(from, today.toISOString());
-    return false;
-  }
-
-  return true;
+const hasChattedBefore = (from) => {
+  return userMap.has(from);
 };
 
 const welcomeMessage = () => {
@@ -25,7 +13,8 @@ const welcomeMessage = () => {
     - *!ping*
     - *!chiste*
     - *!frase*
-    - *!imagen*`;
+    - *!imagen*
+    - *!ayuda*`;
 };
 
 const reply = async (client, message) => {
@@ -35,7 +24,11 @@ const reply = async (client, message) => {
 
     if ((type !== 'chat' && author !== undefined) || chat.isGroup) return;
 
-    if (!hasHistory(from)) await client.sendMessage(from, welcomeMessage());
+    if (!hasChattedBefore(from)) {
+      userMap.set(from, true);
+
+      await client.sendMessage(from, welcomeMessage());
+    }
 
     const text = body.toLowerCase();
 
@@ -49,6 +42,10 @@ const reply = async (client, message) => {
       await horoscope(message);
     } else if (text === '!imagen') {
       await image(client, message);
+    } else if (text.startsWith('!ai')) {
+      await ai(message);
+    } else if (text === '!ayuda') {
+      await help(message);
     }
   }
 };
